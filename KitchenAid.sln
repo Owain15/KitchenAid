@@ -1,9 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.35806.103 d17.14
+VisualStudioVersion = 17.14.35806.103
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenAid", "KitchenAid.csproj", "{581E75D8-8F07-4129-A61D-15409D42A8A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenAid.Console", "KitchenAid.Console\KitchenAid.Console.csproj", "{0355ED30-3E92-DDAA-18C0-CC0A3CBC98EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenAid", "KitchenAid\KitchenAid.csproj", "{9D894BA2-A856-5EDD-A025-7191F7DCBEEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenAid.Tests", "KitchenAid.Tests\KitchenAid.Tests.csproj", "{A62F7AE2-97E7-45E9-B4AA-735541B704B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +20,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{581E75D8-8F07-4129-A61D-15409D42A8A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{581E75D8-8F07-4129-A61D-15409D42A8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{581E75D8-8F07-4129-A61D-15409D42A8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{581E75D8-8F07-4129-A61D-15409D42A8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0355ED30-3E92-DDAA-18C0-CC0A3CBC98EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0355ED30-3E92-DDAA-18C0-CC0A3CBC98EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0355ED30-3E92-DDAA-18C0-CC0A3CBC98EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0355ED30-3E92-DDAA-18C0-CC0A3CBC98EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D894BA2-A856-5EDD-A025-7191F7DCBEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D894BA2-A856-5EDD-A025-7191F7DCBEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D894BA2-A856-5EDD-A025-7191F7DCBEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D894BA2-A856-5EDD-A025-7191F7DCBEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A62F7AE2-97E7-45E9-B4AA-735541B704B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A62F7AE2-97E7-45E9-B4AA-735541B704B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A62F7AE2-97E7-45E9-B4AA-735541B704B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A62F7AE2-97E7-45E9-B4AA-735541B704B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
