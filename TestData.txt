@@ -1,0 +1,101 @@
+dish_id,ingredient_name,measurement_grams
+
+1,Onion,1000
+1,Beef Broth,1200
+1,Gruyere Cheese,200
+1,Butter,50
+1,Baguette,150
+2,Spaghetti,400
+2,Pancetta,200
+2,Eggs,200
+2,Parmesan,100
+2,Black Pepper,5
+3,Chicken Breast,800
+3,Coconut Milk,400
+3,Onion,300
+3,Tomatoes,400
+3,Curry Powder,30
+3,Garlic,20
+4,Romaine Lettuce,600
+4,Parmesan,80
+4,Croutons,100
+4,Caesar Dressing,150
+4,Chicken Breast,400
+5,Ground Beef,600
+5,Taco Shells,120
+5,Cheddar Cheese,200
+5,Lettuce,150
+5,Tomatoes,200
+5,Sour Cream,100
+6,Broccoli,300
+6,Bell Peppers,250
+6,Carrots,200
+6,Soy Sauce,60
+6,Ginger,15
+6,Rice,400
+7,Arborio Rice,350
+7,Mushrooms,400
+7,Vegetable Stock,1000
+7,Parmesan,100
+7,White Wine,150
+7,Butter,60
+8,Cucumber,300
+8,Tomatoes,400
+8,Feta Cheese,200
+8,Red Onion,100
+8,Olives,150
+8,Olive Oil,50
+9,Flour,300
+9,Butter,200
+9,Sugar,150
+9,Brown Sugar,150
+9,Chocolate Chips,250
+9,Eggs,100
+10,Bananas,400
+10,Flour,250
+10,Sugar,200
+10,Butter,100
+10,Eggs,100
+10,Baking Soda,5
+11,Tomatoes,1200
+11,Onion,200
+11,Vegetable Broth,800
+11,Heavy Cream,200
+11,Garlic,15
+12,Bread,200
+12,Cheddar Cheese,150
+12,Butter,30
+13,Rice Noodles,300
+13,Shrimp,400
+13,Bean Sprouts,150
+13,Peanuts,80
+13,Tamarind Paste,40
+13,Fish Sauce,30
+13,Eggs,100
+14,Lasagna Noodles,400
+14,Ground Beef,600
+14,Ricotta Cheese,500
+14,Mozzarella,400
+14,Tomato Sauce,800
+14,Parmesan,100
+15,Cod Fillets,800
+15,Potatoes,800
+15,Flour,150
+15,Beer,200
+15,Vegetable Oil,500
+16,Chicken Breast,500
+16,Egg Noodles,200
+16,Carrots,200
+16,Celery,150
+16,Chicken Broth,1500
+17,Beef Chuck,800
+17,Potatoes,600
+17,Carrots,300
+17,Onion,200
+17,Beef Broth,1000
+17,Tomato Paste,50
+18,Pizza Dough,500
+18,Mozzarella,300
+18,Tomato Sauce,200
+18,Basil,20
+18,Olive Oil,30
