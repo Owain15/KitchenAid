@@ -2,6 +2,7 @@
 using KitchenAid;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KitchenAid.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251027214021_AddReceipeOwnership")]
+    partial class AddReceipeOwnership
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
@@ -89,7 +92,7 @@ namespace KitchenAid.Migrations
                     b.ToTable("RecipeIngredient");
                 });
 
-            modelBuilder.Entity("KitchenAid.RecipeSubRecipe", b =>
+            modelBuilder.Entity("KitchenAid.RecipeRecipe", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -107,7 +110,7 @@ namespace KitchenAid.Migrations
 
                     b.HasIndex("ParentRecipeId");
 
-                    b.ToTable("RecipeSubRecipe");
+                    b.ToTable("RecipeRecipe");
                 });
 
             modelBuilder.Entity("KitchenAid.Allergies", b =>
@@ -184,7 +187,7 @@ namespace KitchenAid.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("KitchenAid.RecipeSubRecipe", b =>
+            modelBuilder.Entity("KitchenAid.RecipeRecipe", b =>
                 {
                     b.HasOne("KitchenAid.Recipe", "ChildRecipe")
                         .WithMany()
@@ -200,7 +203,7 @@ namespace KitchenAid.Migrations
 
                     b.OwnsOne("KitchenAid.UnitAndMeasure", "UnitsAndMeasures", b1 =>
                         {
-                            b1.Property<long>("RecipeSubRecipeId")
+                            b1.Property<long>("RecipeRecipeId")
                                 .HasColumnType("INTEGER");
 
                             b1.Property<decimal>("Measurement")
@@ -209,12 +212,12 @@ namespace KitchenAid.Migrations
                             b1.Property<int>("Unit")
                                 .HasColumnType("INTEGER");
 
-                            b1.HasKey("RecipeSubRecipeId");
+                            b1.HasKey("RecipeRecipeId");
 
-                            b1.ToTable("RecipeSubRecipe");
+                            b1.ToTable("RecipeRecipe");
 
                             b1.WithOwner()
-                                .HasForeignKey("RecipeSubRecipeId");
+                                .HasForeignKey("RecipeRecipeId");
                         });
 
                     b.Navigation("ChildRecipe");

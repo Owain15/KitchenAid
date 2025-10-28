@@ -14,11 +14,25 @@ namespace KitchenAid
 		}
 
 
-		public DbSet<Dish> Dishes { get; set; }
+		public DbSet<Recipe> Recipes { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
+
+			//modelBuilder.Entity<Recipe>()
+			//	.OwnsOne(i => i.UnitsAndMeasures);
+
+			modelBuilder.Entity<Recipe>()
+			.OwnsOne(i => i.FinalMeasure);
+
+			modelBuilder.Entity<RecipeIngredient>()
+			.OwnsOne(i => i.UnitsAndMeasures);
+
+			modelBuilder.Entity<RecipeSubRecipe>()
+			.OwnsOne(i => i.UnitsAndMeasures);
+
+
 		}
 	}
 

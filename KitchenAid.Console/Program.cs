@@ -8,10 +8,19 @@ optionsBuilder.UseSqlite("Data Source=myapp.db");
 using (var context = new AppDbContext(optionsBuilder.Options))
 {
 	// Ensure database is created
-	context.Database.EnsureCreated();
+	//context.Database.EnsureCreated();
 
 	// Use your context
-	var items = context.Dishes.ToList();
+	//var items = context.Recipes.ToList();
+
+	var foo = new Recipe("Brownie")
+;
+	context.Recipes.Add(foo);
+	context.SaveChanges();
+
+	var i = context.Recipes.ToList();
+	Console.Write(i.First());
+
 }
 
 
