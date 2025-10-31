@@ -1,4 +1,5 @@
 ﻿
+using KitchenAid.Table;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 

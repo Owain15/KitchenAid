@@ -5,14 +5,11 @@
 namespace KitchenAid.Migrations
 {
     /// <inheritdoc />
-    public partial class AddRecipesAndAllergies : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Dishes");
-
             migrationBuilder.CreateTable(
                 name: "Ingredient",
                 columns: table => new
@@ -90,6 +87,34 @@ namespace KitchenAid.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "RecipeSubRecipe",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ParentRecipeId = table.Column<long>(type: "INTEGER", nullable: false),
+                    ChildRecipeId = table.Column<long>(type: "INTEGER", nullable: false),
+                    UnitsAndMeasures_Measurement = table.Column<decimal>(type: "TEXT", nullable: false),
+                    UnitsAndMeasures_Unit = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecipeSubRecipe", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RecipeSubRecipe_Recipes_ChildRecipeId",
+                        column: x => x.ChildRecipeId,
+                        principalTable: "Recipes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RecipeSubRecipe_Recipes_ParentRecipeId",
+                        column: x => x.ParentRecipeId,
+                        principalTable: "Recipes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Allergies_IngredientId",
                 table: "Allergies",
@@ -104,6 +129,16 @@ namespace KitchenAid.Migrations
                 name: "IX_RecipeIngredient_RecipeId",
                 table: "RecipeIngredient",
                 column: "RecipeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RecipeSubRecipe_ChildRecipeId",
+                table: "RecipeSubRecipe",
+                column: "ChildRecipeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RecipeSubRecipe_ParentRecipeId",
+                table: "RecipeSubRecipe",
+                column: "ParentRecipeId");
         }
 
         /// <inheritdoc />
@@ -116,22 +151,13 @@ namespace KitchenAid.Migrations
                 name: "RecipeIngredient");
 
             migrationBuilder.DropTable(
+                name: "RecipeSubRecipe");
+
+            migrationBuilder.DropTable(
                 name: "Ingredient");
 
             migrationBuilder.DropTable(
                 name: "Recipes");
-
-            migrationBuilder.CreateTable(
-                name: "Dishes",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Dishes", x => x.Id);
-                });
         }
     }
 }
