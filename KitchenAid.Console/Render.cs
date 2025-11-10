@@ -107,8 +107,8 @@ namespace KitchenAid.Console
 			string result = string.Empty;
 
 			string ingredientList = string.Empty; 
-			foreach(var ingredient in input.Ingredients)
-			{ ingredientList += ingredient.Ingredient.Name + " - " + ingredient.UnitsAndMeasures.Measurement.ToString() + ingredient.UnitsAndMeasures.Unit.ToString() + " , "; }
+			//foreach(var ingredient in input.Ingredients)
+			//{ ingredientList += ingredient.Ingredient.Name + " - " + ingredient.UnitsAndMeasures.Measurement.ToString() + ingredient.UnitsAndMeasures.Unit.ToString() + " , "; }
 
 			result = $"Name : {input.Name}\n\rId : {input.Id}\n\r\n\rIngredients :\n\r{ingredientList}\n\r\n\rInstructions :\n\r{input.Instructions}\n\r\n\r";
 

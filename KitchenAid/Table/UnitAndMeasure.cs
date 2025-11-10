@@ -10,7 +10,8 @@
 
 	public enum Units
 	{
-
+		Grams,
+		Millilitres
 	}
 
 }

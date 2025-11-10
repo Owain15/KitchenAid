@@ -2,6 +2,8 @@
 using KitchenAid.Table;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore.Migrations;
+using System.Data;
 
 namespace KitchenAid
 {
@@ -16,24 +18,92 @@ namespace KitchenAid
 
 
 		public DbSet<Recipe> Recipes { get; set; }
+		public DbSet<RecipeSubRecipe> SubRecipes { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
 
-			//modelBuilder.Entity<Recipe>()
-			//	.OwnsOne(i => i.UnitsAndMeasures);
-
-			modelBuilder.Entity<Recipe>()
-			.OwnsOne(i => i.FinalMeasure);
-
 			modelBuilder.Entity<RecipeIngredient>()
 			.OwnsOne(i => i.UnitsAndMeasures);
 
 			modelBuilder.Entity<RecipeSubRecipe>()
-			.OwnsOne(i => i.UnitsAndMeasures);
+				.HasOne(rr => rr.ParentRecipe)
+				.WithMany(r => r.SubRecipes);
+
+			modelBuilder.Entity<Recipe>().OwnsOne(r => r.FinalMeasure, fm =>
+			{
+				fm.WithOwner().HasForeignKey("RecipeId");
+				fm.HasKey("RecipeId");
+			});
+
+			modelBuilder.Entity<RecipeSubRecipe>().OwnsOne(r => r.UnitsAndMeasures, um =>
+			{
+				um.WithOwner().HasForeignKey("RecipeSubRecipeId");
+				um.HasKey("RecipeSubRecipeId");
+			});
 
 
+
+			SeedDb(modelBuilder);
+
+		}
+
+		private void SeedDb(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<Recipe>().HasData(
+		new Recipe { Id = 1, Name = "Bread" },
+		new Recipe { Id = 2, Name = "Oil" },
+		new Recipe { Id = 3, Name = "Garlic" },
+		new Recipe { Id = 4, Name = "Parmesan" },
+		new Recipe { Id = 5, Name = "Anchovy" },
+		new Recipe { Id = 6, Name = "Mayonnaise" },
+		new Recipe { Id = 7, Name = "Salad Leaf" },
+		new Recipe { Id = 8, Name = "Crouton" },
+		new Recipe { Id = 9, Name = "Caesar Dressing" },
+		new Recipe { Id = 10, Name = "Caesar Salad" }
+	);
+
+
+
+			modelBuilder.Entity<Recipe>().OwnsOne(r => r.FinalMeasure).HasData(
+				new { RecipeId = 1L, Measurement = 100m, Unit = Units.Grams },
+				new { RecipeId = 2L, Measurement = 100m, Unit = Units.Grams },
+				new { RecipeId = 3L, Measurement = 100m, Unit = Units.Grams },
+				new { RecipeId = 4L, Measurement = 100m, Unit = Units.Grams },
+				new { RecipeId = 5L, Measurement = 100m, Unit = Units.Grams },
+				new { RecipeId = 6L, Measurement = 100m, Unit = Units.Grams },
+				new { RecipeId = 7L, Measurement = 100m, Unit = Units.Grams },
+				new { RecipeId = 8L, Measurement = 100m, Unit = Units.Grams },
+				new { RecipeId = 9L, Measurement = 300m, Unit = Units.Millilitres },
+				new { RecipeId = 10L, Measurement = 250m, Unit = Units.Grams }
+			);
+
+
+			modelBuilder.Entity<RecipeSubRecipe>().HasData(
+	new RecipeSubRecipe { Id = 1, ParentRecipeId = 8, ChildRecipeId = 1 },
+	new RecipeSubRecipe { Id = 2, ParentRecipeId = 8, ChildRecipeId = 3 },
+	new RecipeSubRecipe { Id = 3, ParentRecipeId = 8, ChildRecipeId = 2 },
+	new RecipeSubRecipe { Id = 4, ParentRecipeId = 9, ChildRecipeId = 3 },
+	new RecipeSubRecipe { Id = 5, ParentRecipeId = 9, ChildRecipeId = 4 },
+	new RecipeSubRecipe { Id = 6, ParentRecipeId = 9, ChildRecipeId = 5 },
+	new RecipeSubRecipe { Id = 7, ParentRecipeId = 9, ChildRecipeId = 6 },
+	new RecipeSubRecipe { Id = 8, ParentRecipeId = 10, ChildRecipeId = 7 },
+	new RecipeSubRecipe { Id = 9, ParentRecipeId = 10, ChildRecipeId = 8 },
+	new RecipeSubRecipe { Id = 10, ParentRecipeId = 10, ChildRecipeId = 9 }
+);
+			modelBuilder.Entity<RecipeSubRecipe>().OwnsOne(r => r.UnitsAndMeasures).HasData(
+				new { RecipeSubRecipeId = 1L, Measurement = 90m, Unit = Units.Grams },
+				new { RecipeSubRecipeId = 2L, Measurement = 4m, Unit = Units.Grams },
+				new { RecipeSubRecipeId = 3L, Measurement = 30m, Unit = Units.Millilitres },
+				new { RecipeSubRecipeId = 4L, Measurement = 8m, Unit = Units.Grams },
+				new { RecipeSubRecipeId = 5L, Measurement = 60m, Unit = Units.Grams },
+				new { RecipeSubRecipeId = 6L, Measurement = 10m, Unit = Units.Grams },
+				new { RecipeSubRecipeId = 7L, Measurement = 280m, Unit = Units.Millilitres },
+				new { RecipeSubRecipeId = 8L, Measurement = 150m, Unit = Units.Grams },
+				new { RecipeSubRecipeId = 9L, Measurement = 30m, Unit = Units.Grams },
+				new { RecipeSubRecipeId = 10L, Measurement = 70m, Unit = Units.Millilitres }
+			);
 		}
 	}
 

@@ -4,18 +4,17 @@
 	{
 		public long Id { get; set; }
 		public string Name { get; set; } = "Undefined.";
-		public ICollection<RecipeIngredient> Ingredients { get; set; } = new List<RecipeIngredient>();
-		//public ICollection<UnitAndMeasure> UnitsAndMeasures { get; set; } = new List<UnitAndMeasure>();
+		public ICollection<RecipeSubRecipe> SubRecipes { get; set; } = new List<RecipeSubRecipe>();
 		public string? Instructions { get; set; }
 
-		public UnitAndMeasure? FinalMeasure;
+		public UnitAndMeasure? FinalMeasure { get; set; }
 
 		public Recipe(string name)
 		{
 			Name = name;
 		}
 
-		private Recipe() { }
+		public Recipe() { }
 
 
 
