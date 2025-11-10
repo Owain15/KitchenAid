@@ -1,31 +1,74 @@
 ﻿
 using KitchenAid;
+using KitchenAid.Console;
 using KitchenAid.Table;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
-var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-optionsBuilder.UseSqlite("Data Source=myapp.db");
+AppData appData = new AppData();
 
-using (var context = new AppDbContext(optionsBuilder.Options))
+while (appData.isRunning)
 {
-	// Ensure database is created
-	context.Database.EnsureCreated();
+	//render display
+	Render.Display(appData);
+	//Render.MainDisplay();
 
-	// Use your context
-	var items = context.Recipes.ToList();
+	//get command
+	//Console.ReadLine();
 
-	//var foo = new Recipe("Brownie")
-	//context.Recipes.Add(foo);
-	//context.SaveChanges();
+	//Run/get command
+	appData = RunCommand(appData, Console.ReadLine());	
+}
 
-	var i = context.Recipes.ToList();
-	Console.WriteLine(i.First().Name);
+Environment.Exit(0);
 
+AppData RunCommand(AppData appData, string input)
+{
+	switch(input)
+	{
+		case "": { break; }
+		case "exit": { appData.isRunning = false; break; }
+		default: 
+			{ 
+				System.Console.WriteLine("\n\rinvalid input\n\rpress any key to continue");
+				System.Console.ReadKey();
+				break;
+			}
+	}
+
+	return appData;
 }
 
 
 
-Console.WriteLine("Hello All!");
+//Console.WriteLine("KitchenAid!");
 
 
-Console.ReadLine();
+//var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+//optionsBuilder.UseSqlite("Data Source=myapp.db");
+
+//using (var context = new AppDbContext(optionsBuilder.Options))
+//{
+//	// Ensure database is created
+//	context.Database.EnsureCreated();
+
+//	// Use your context
+//	var items = context.Recipes.ToList();
+
+//	//var foo = new Recipe("Brownie")
+//	//context.Recipes.Add(foo);
+//	//context.SaveChanges();
+
+//	//var i = context.Recipes.ToList();
+//	//Console.WriteLine(i.First().Name);
+
+//	Console.ReadLine();
+
+//}
+
+
+
+
+
+
+//Console.ReadLine();

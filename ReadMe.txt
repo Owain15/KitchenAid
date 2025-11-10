@@ -6,4 +6,6 @@ dotnet ef database update --project ./KitchenAid
 
 dotnet ef migrations add AddRecipesAndAllergies --project ./KitchenAid --startup-project ./KitchenAid.Console
 
+dotnet ef database update  --project ./KitchenAid --startup-project ./KitchenAid.Console
+
 

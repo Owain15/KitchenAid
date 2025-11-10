@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KitchenAid.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251031120046_InitialCreate")]
+    [Migration("20251107132655_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,11 +25,12 @@ namespace KitchenAid.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("AllergyId")
+                    b.Property<long?>("IngredientId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("IngredientId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -116,10 +117,8 @@ namespace KitchenAid.Migrations
             modelBuilder.Entity("KitchenAid.Table.Allergies", b =>
                 {
                     b.HasOne("KitchenAid.Table.Ingredient", null)
-                        .WithMany("Allergies")
-                        .HasForeignKey("IngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("AllergieIds")
+                        .HasForeignKey("IngredientId");
                 });
 
             modelBuilder.Entity("KitchenAid.Table.Recipe", b =>
@@ -230,7 +229,7 @@ namespace KitchenAid.Migrations
 
             modelBuilder.Entity("KitchenAid.Table.Ingredient", b =>
                 {
-                    b.Navigation("Allergies");
+                    b.Navigation("AllergieIds");
                 });
 
             modelBuilder.Entity("KitchenAid.Table.Recipe", b =>

@@ -5,7 +5,7 @@
 		public long Id { get; set; }
 		public string Name { get; set; }
 
-		public ICollection<Allergies> Allergies { get; set;} = new List<Allergies>();
+		public ICollection<Allergies> AllergieIds { get; set;} = new List<Allergies>();
 
 		public Ingredient(string name)
 		{
