@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KitchenAid\KitchenAid.csproj" />
+    <ProjectReference Include="..\KitchenAid\KitchenAid.DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>

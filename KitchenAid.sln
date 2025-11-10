@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.35806.103
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenAid.Console", "KitchenAid.Console\KitchenAid.Console.csproj", "{0355ED30-3E92-DDAA-18C0-CC0A3CBC98EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenAid", "KitchenAid\KitchenAid.csproj", "{9D894BA2-A856-5EDD-A025-7191F7DCBEEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenAid.DataAccess", "KitchenAid\KitchenAid.DataAccess.csproj", "{9D894BA2-A856-5EDD-A025-7191F7DCBEEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenAid.Tests", "KitchenAid.Tests\KitchenAid.Tests.csproj", "{A62F7AE2-97E7-45E9-B4AA-735541B704B2}"
 EndProject
