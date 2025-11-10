@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KitchenAid.Table
 {
-	internal class Supplier : DbTable
+	public class Supplier
 	{
 		public long Id { get; set; }
 
