@@ -1,47 +1,33 @@
 ﻿
 
-
 public struct AppData
 {
 	public bool isRunning { get; set; }
+	public Tables table { get; set; }
+	public tableAction action { get; set; }
 
 	public AppData()
 	{
 		isRunning = true;
+		table = Tables.notSet;
+		action = tableAction.notSet;
 	}
 
 }
 
+public enum Tables
+{
+	notSet,
+	recipe,
+	ingredient,
+	suppliers
+}
 
+public enum tableAction
+{
+	notSet,
+	view,
+	add,
+	remove
+}
 
-//Console.WriteLine("KitchenAid!");
-
-
-//var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-//optionsBuilder.UseSqlite("Data Source=myapp.db");
-
-//using (var context = new AppDbContext(optionsBuilder.Options))
-//{
-//	// Ensure database is created
-//	context.Database.EnsureCreated();
-
-//	// Use your context
-//	var items = context.Recipes.ToList();
-
-//	//var foo = new Recipe("Brownie")
-//	//context.Recipes.Add(foo);
-//	//context.SaveChanges();
-
-//	//var i = context.Recipes.ToList();
-//	//Console.WriteLine(i.First().Name);
-
-//	Console.ReadLine();
-
-//}
-
-
-
-
-
-
-//Console.ReadLine();

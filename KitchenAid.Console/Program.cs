@@ -3,6 +3,8 @@ using KitchenAid;
 using KitchenAid.Console;
 using KitchenAid.Table;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.Design;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 
 AppData appData = new AppData();
@@ -24,16 +26,38 @@ Environment.Exit(0);
 
 AppData RunCommand(AppData appData, string input)
 {
-	switch(input)
+	var options = (appData.table == Tables.notSet) ? Enum.GetNames(typeof(Tables)) : Enum.GetNames(typeof(tableAction));
+
+
+	if (input == "")
+	{  }
+	else if(input == "exit")
 	{
-		case "": { break; }
-		case "exit": { appData.isRunning = false; break; }
-		default: 
-			{ 
-				System.Console.WriteLine("\n\rinvalid input\n\rpress any key to continue");
-				System.Console.ReadKey();
-				break;
-			}
+		appData.isRunning = false;
+	}
+	else if(input == "back" && appData.table != Tables.notSet)
+	{
+		appData.table = Tables.notSet;
+	}
+	else if(int.TryParse(input, out int output) && output < options.Count())
+	{
+		
+		if (appData.table == Tables.notSet)
+		{ appData.table = (Tables)output; }
+		else if (appData.action == tableAction.notSet)
+		{ appData.action = (tableAction)output; }
+	}
+	else if(options.Contains(input.ToLower()))
+	{
+		if(appData.table == Tables.notSet)
+		{ appData.table = (Tables)Enum.Parse(typeof(Tables), input); }
+		else if(appData.action == tableAction.notSet)
+		{ appData.action = (tableAction)Enum.Parse(typeof(tableAction), input); }
+	}
+	else
+	{
+		System.Console.WriteLine("\n\rinvalid input\n\rpress any key to continue");
+		System.Console.ReadKey();
 	}
 
 	return appData;

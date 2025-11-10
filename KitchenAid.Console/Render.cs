@@ -12,8 +12,8 @@ namespace KitchenAid.Console
 		private static string rootTitle = "  KitchenAid-ConsoleApp";
 		public static void Display(AppData appData)
 		{
-			string title = TitleBuilder();
-			string prompt = PromptBuilder();
+			string title = TitleBuilder(appData);
+			string prompt = PromptBuilder(appData);
 
 			//clear cosole and render new display
 			System.Console.Clear();
@@ -21,12 +21,42 @@ namespace KitchenAid.Console
 
 		}
 
-		private static string TitleBuilder()
-		{ return rootTitle + "\n\r"; }
-
-		private static string PromptBuilder()
+		private static string TitleBuilder(AppData appData)
 		{
-			return "\n\rChoose a table from-\n\r1.recipe 2.ingredient 3.suppliers\n\r\n\ror type exit to close app.\n\r\n\rInput-";
+			string result = rootTitle;
+
+			if(appData.table != Tables.notSet)
+			{ 
+				result += "-" + appData.table.ToString();
+
+				if (appData.action != tableAction.notSet)
+				{
+					result += "-" + appData.action.ToString();
+				}
+			}
+
+			return result  + "\n\r\n\r"; 
+		}
+
+		private static string PromptBuilder(AppData appData)
+		{
+			string p1 = (appData.table == Tables.notSet) ? "table" : "action";
+			string p2 = (appData.table != Tables.notSet) ?  "\"back\" to return, " : string.Empty;
+			var options = (appData.table == Tables.notSet) ? Enum.GetNames(typeof(Tables)) : Enum.GetNames(typeof(tableAction));
+
+			string result = $"Choose a {p1} from -\n\r";
+			
+			//start rom 1 to avoid notSet
+			for(int i = 1; i < options.Count(); i ++)
+			{ result += $"{i}.{options[i]} "; }			
+
+
+			result += $"\n\r\n\ror type {p2}\"exit\" to close app";
+			
+			result +="\n\r\n\rInput-";
+
+			return result;
+			
 		}
 
 		public static void MainDisplay()
