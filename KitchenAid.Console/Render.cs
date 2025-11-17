@@ -110,9 +110,10 @@ namespace KitchenAid.Console
 			foreach(var ingredient in input.SubRecipes)
 			{ ingredientList += ingredient.ChildRecipe.Name + " - " + ingredient.UnitsAndMeasures.Measurement.ToString() + " " + ingredient.UnitsAndMeasures.Unit.ToString() + " , "; }
 
-			string finalMeasure = input.FinalMeasure.Measurement.ToString() + " " + input.FinalMeasure.Unit.ToString();
+			string finalMeasure = (input.FinalMeasure != null) ? input.FinalMeasure.Measurement.ToString() + " " + input.FinalMeasure.Unit.ToString() : string.Empty;
+				
 
-			result = $"Name : {input.Name}\n\rId : {input.Id}\n\r\n\rFinal Measure : {finalMeasure}\n\r\n\rIngredients :\n\r{ingredientList}\n\r\n\rInstructions :\n\r{input.Instructions}\n\r\n\r";
+			result = $"Name : {input.Name}\n\r\n\rId : {input.Id}\n\r\n\rFinal Measure : {finalMeasure}\n\r\n\rIngredients :\n\r{ingredientList}\n\r\n\rInstructions :\n\r{input.Instructions}\n\r\n\r";
 
 			return result;
 		}
@@ -143,20 +144,30 @@ namespace KitchenAid.Console
 
 			System.Console.WriteLine("  KitchenAid-ConsoleApp-TestDisplay\n\r\n\r");
 
-			//System.Console.WriteLine("Recipe Count : " + data.Count.ToString() + "\n\r\n\r");
+			System.Console.WriteLine("Recipe Count : " + data.Count.ToString() + "\n\r\n\r");
 
-			//foreach (var item in data)
-			//{
-			//	System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -");
-			//	System.Console.WriteLine("Name: " + item.Name + "\n\rId: " + item.Id + "\n\rSubRecipe Count: " + item.SubRecipes.Count.ToString());
-			//	System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -\n\r\n\r");
-			//}
+			foreach (var item in data)
+			{
+				System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -");
+				System.Console.WriteLine("Name: " + item.Name + "\n\rId: " + item.Id + "\n\rSubRecipe Count: " + item.SubRecipes.Count.ToString());
+				System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -\n\r\n\r");
+			}
 
-			System.Console.WriteLine(Render.Recipe(data[8]));
+			System.Console.ReadLine();
 
-			data[8].Instructions = "MIX!";
+			Recipe rec = data.Where(x => x.Id == 12).First();
 
-			DataAccess.iMyDb.UpdateRecipe(data[8]);
+			//rec.Id = data.Count +1;
+			//rec.Name = "Egg";
+			//rec.FinalMeasure = new UnitAndMeasure();
+			//rec.FinalMeasure.Measurement = 28m;
+			//rec.FinalMeasure.Unit = Units.Grams; 
+			//System.Console.WriteLine(Render.Recipe(rec));
+
+			System.Console.ReadLine();
+
+			DataAccess.iMyDb.RemoveRecipe(rec);
+
 
 		}
 
