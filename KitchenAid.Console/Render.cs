@@ -107,8 +107,8 @@ namespace KitchenAid.Console
 			string result = string.Empty;
 
 			string ingredientList = string.Empty; 
-			//foreach(var ingredient in input.Ingredients)
-			//{ ingredientList += ingredient.Ingredient.Name + " - " + ingredient.UnitsAndMeasures.Measurement.ToString() + ingredient.UnitsAndMeasures.Unit.ToString() + " , "; }
+			foreach(var ingredient in input.SubRecipes)
+			{ ingredientList += ingredient.ParentRecipe.Name + " - " + ingredient.UnitsAndMeasures.Measurement.ToString() + ingredient.UnitsAndMeasures.Unit.ToString() + " , "; }
 
 			result = $"Name : {input.Name}\n\rId : {input.Id}\n\r\n\rIngredients :\n\r{ingredientList}\n\r\n\rInstructions :\n\r{input.Instructions}\n\r\n\r";
 
@@ -133,5 +133,50 @@ namespace KitchenAid.Console
 
 		}
 
+		public static void TestDisplay()
+		{
+			List<Recipe> data = DataAccess.iMyDb.TestCode();
+			
+			System.Console.Clear();
+
+			System.Console.WriteLine("  KitchenAid-ConsoleApp-TestDisplay\n\r\n\r");
+
+			System.Console.WriteLine("Recipe Count : " + data.Count.ToString() + "\n\r\n\r");
+
+			foreach (var item in data)
+			{
+				System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -");
+				System.Console.WriteLine("Name: " + item.Name + "\n\rId: " + item.Id + "\n\rSubRecipe Count: " + item.SubRecipes.Count.ToString());
+				System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -\n\r\n\r");
+			}
+
+			//System.Console.WriteLine(Render.Recipe(data[8]));
+
+		}
+
 	}
 }
+
+
+
+//var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+//optionsBuilder.UseSqlite("Data Source=myapp.db");
+
+//using (var context = new AppDbContext(optionsBuilder.Options))
+//{
+//	// Ensure database is created
+//	context.Database.EnsureCreated();
+
+//	// Use your context
+//	var items = context.Recipes.ToList();
+
+//	//var foo = new Recipe("Brownie")
+//	//context.Recipes.Add(foo);
+//	//context.SaveChanges();
+
+//	//var i = context.Recipes.ToList();
+//	//Console.WriteLine(i.First().Name);
+
+
+
+//}

@@ -14,8 +14,8 @@ AppData appData = new AppData();
 while (appData.isRunning)
 {
 	//render display
-	Render.Display(appData);
-	//Render.MainDisplay();
+	//Render.Display(appData);
+	Render.TestDisplay();
 
 	//get command
 	//Console.ReadLine();
