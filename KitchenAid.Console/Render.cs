@@ -108,9 +108,11 @@ namespace KitchenAid.Console
 
 			string ingredientList = string.Empty; 
 			foreach(var ingredient in input.SubRecipes)
-			{ ingredientList += ingredient.ParentRecipe.Name + " - " + ingredient.UnitsAndMeasures.Measurement.ToString() + ingredient.UnitsAndMeasures.Unit.ToString() + " , "; }
+			{ ingredientList += ingredient.ChildRecipe.Name + " - " + ingredient.UnitsAndMeasures.Measurement.ToString() + " " + ingredient.UnitsAndMeasures.Unit.ToString() + " , "; }
 
-			result = $"Name : {input.Name}\n\rId : {input.Id}\n\r\n\rIngredients :\n\r{ingredientList}\n\r\n\rInstructions :\n\r{input.Instructions}\n\r\n\r";
+			string finalMeasure = input.FinalMeasure.Measurement.ToString() + " " + input.FinalMeasure.Unit.ToString();
+
+			result = $"Name : {input.Name}\n\rId : {input.Id}\n\r\n\rFinal Measure : {finalMeasure}\n\r\n\rIngredients :\n\r{ingredientList}\n\r\n\rInstructions :\n\r{input.Instructions}\n\r\n\r";
 
 			return result;
 		}
@@ -141,16 +143,16 @@ namespace KitchenAid.Console
 
 			System.Console.WriteLine("  KitchenAid-ConsoleApp-TestDisplay\n\r\n\r");
 
-			System.Console.WriteLine("Recipe Count : " + data.Count.ToString() + "\n\r\n\r");
+			//System.Console.WriteLine("Recipe Count : " + data.Count.ToString() + "\n\r\n\r");
 
-			foreach (var item in data)
-			{
-				System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -");
-				System.Console.WriteLine("Name: " + item.Name + "\n\rId: " + item.Id + "\n\rSubRecipe Count: " + item.SubRecipes.Count.ToString());
-				System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -\n\r\n\r");
-			}
+			//foreach (var item in data)
+			//{
+			//	System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -");
+			//	System.Console.WriteLine("Name: " + item.Name + "\n\rId: " + item.Id + "\n\rSubRecipe Count: " + item.SubRecipes.Count.ToString());
+			//	System.Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - -\n\r\n\r");
+			//}
 
-			//System.Console.WriteLine(Render.Recipe(data[8]));
+			System.Console.WriteLine(Render.Recipe(data[8]));
 
 		}
 

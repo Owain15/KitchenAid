@@ -23,6 +23,12 @@ namespace KitchenAid.DataAccess
 				context.Database.EnsureCreated();
 
 				result = context.Recipes.ToList();
+
+				for(int i = 0; i < result.Count; i++)
+				{
+					result[i].SubRecipes = context.SubRecipes.Where(x => x.ParentRecipeId == result[i].Id).ToList();
+				}
+
 			}
 
 

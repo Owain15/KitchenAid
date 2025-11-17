@@ -81,16 +81,16 @@ namespace KitchenAid
 
 
 			modelBuilder.Entity<RecipeSubRecipe>().HasData(
-	new RecipeSubRecipe { Id = 1, ParentRecipeId = 8, ChildRecipeId = 1 },
-	new RecipeSubRecipe { Id = 2, ParentRecipeId = 8, ChildRecipeId = 3 },
-	new RecipeSubRecipe { Id = 3, ParentRecipeId = 8, ChildRecipeId = 2 },
-	new RecipeSubRecipe { Id = 4, ParentRecipeId = 9, ChildRecipeId = 3 },
-	new RecipeSubRecipe { Id = 5, ParentRecipeId = 9, ChildRecipeId = 4 },
-	new RecipeSubRecipe { Id = 6, ParentRecipeId = 9, ChildRecipeId = 5 },
-	new RecipeSubRecipe { Id = 7, ParentRecipeId = 9, ChildRecipeId = 6 },
-	new RecipeSubRecipe { Id = 8, ParentRecipeId = 10, ChildRecipeId = 7 },
-	new RecipeSubRecipe { Id = 9, ParentRecipeId = 10, ChildRecipeId = 8 },
-	new RecipeSubRecipe { Id = 10, ParentRecipeId = 10, ChildRecipeId = 9 }
+	new RecipeSubRecipe { Id = 1L, ParentRecipeId = 8L, ChildRecipeId = 1L },
+	new RecipeSubRecipe { Id = 2L, ParentRecipeId = 8L, ChildRecipeId = 3L },
+	new RecipeSubRecipe { Id = 3L, ParentRecipeId = 8L, ChildRecipeId = 2L },
+	new RecipeSubRecipe { Id = 4L, ParentRecipeId = 9L, ChildRecipeId = 3L },
+	new RecipeSubRecipe { Id = 5L, ParentRecipeId = 9L, ChildRecipeId = 4L },
+	new RecipeSubRecipe { Id = 6L, ParentRecipeId = 9L, ChildRecipeId = 5L },
+	new RecipeSubRecipe { Id = 7L, ParentRecipeId = 9L, ChildRecipeId = 6L },
+	new RecipeSubRecipe { Id = 8L, ParentRecipeId = 10L, ChildRecipeId = 7L },
+	new RecipeSubRecipe { Id = 9L, ParentRecipeId = 10L, ChildRecipeId = 8L },
+	new RecipeSubRecipe { Id = 10L, ParentRecipeId = 10L, ChildRecipeId = 9L }
 );
 			modelBuilder.Entity<RecipeSubRecipe>().OwnsOne(r => r.UnitsAndMeasures).HasData(
 				new { RecipeSubRecipeId = 1L, Measurement = 90m, Unit = Units.Grams },
