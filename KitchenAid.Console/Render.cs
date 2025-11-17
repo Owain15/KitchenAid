@@ -154,6 +154,10 @@ namespace KitchenAid.Console
 
 			System.Console.WriteLine(Render.Recipe(data[8]));
 
+			data[8].Instructions = "MIX!";
+
+			DataAccess.iMyDb.UpdateRecipe(data[8]);
+
 		}
 
 	}
