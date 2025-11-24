@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TestData.txt = TestData.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenAid.WinForm", "KitchenAid.WinForm\KitchenAid.WinForm.csproj", "{1BFAA25E-4B13-440C-858F-AC67209CCDD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A62F7AE2-97E7-45E9-B4AA-735541B704B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A62F7AE2-97E7-45E9-B4AA-735541B704B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A62F7AE2-97E7-45E9-B4AA-735541B704B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BFAA25E-4B13-440C-858F-AC67209CCDD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BFAA25E-4B13-440C-858F-AC67209CCDD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BFAA25E-4B13-440C-858F-AC67209CCDD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BFAA25E-4B13-440C-858F-AC67209CCDD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

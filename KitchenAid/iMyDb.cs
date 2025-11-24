@@ -73,6 +73,31 @@ namespace KitchenAid.DataAccess
 			}
 		}
 
+		public static Recipe GetRecipie()
+		{
+			Recipe result = new Recipe();
+			return result;
+		}
+
+
+		public static List<string> GetAllRecipeNames()
+		{
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            optionsBuilder.UseSqlite("Data Source=myapp.db");
+
+			List<String> result = new List<String>();
+
+			using (var context = new AppDbContext(optionsBuilder.Options))
+			{
+                context.Database.EnsureCreated();
+
+                result = context.Recipes.Select(x => x.Name).ToList();
+            }
+
+			return result;
+        }
+
+
 		public static void AddNewRecipe(Recipe entity)
 		{
 			var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
