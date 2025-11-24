@@ -1,4 +1,4 @@
-﻿using KitchenAid.Table;
+﻿using KitchenAid.Domain.Entities;
 
 namespace KitchenAid.DataAccess
 {

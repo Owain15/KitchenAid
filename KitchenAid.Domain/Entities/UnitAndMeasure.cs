@@ -1,4 +1,4 @@
-﻿namespace KitchenAid.Table
+﻿namespace KitchenAid.Domain.Entities
 {
 	public class UnitAndMeasure
 	{

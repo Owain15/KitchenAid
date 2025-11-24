@@ -1,5 +1,5 @@
 ﻿using KitchenAid.DataAccess;
-using KitchenAid.Table;
+using KitchenAid.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;

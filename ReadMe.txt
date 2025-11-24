@@ -14,9 +14,9 @@ dotnet ef migrations add AddSeedData --project ./KitchenAid --startup-project ./
 ----
 
 # Use Cases
-AS A  profecinal Chef
-I WANT TO use stored recipes build meunus
-SO THAT .... recipes can be priced, supplyers compaired, and menus evaluated.
+AS a professional chef
+I WANT TO build a menu 
+SO THAT I can see the deconstructed list of ingredients needed 
 
 
 ----

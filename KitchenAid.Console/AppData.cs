@@ -1,6 +1,6 @@
 ﻿
 
-using KitchenAid.Table;
+using KitchenAid.Domain.Entities;
 
 public struct AppData
 {
