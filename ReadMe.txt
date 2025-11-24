@@ -21,6 +21,7 @@ SO THAT .... recipes can be priced, supplyers compaired, and menus evaluated.
 
 ----
 
+# How to instrument the database from the calling project
 //var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 //optionsBuilder.UseSqlite("Data Source=myapp.db");
 

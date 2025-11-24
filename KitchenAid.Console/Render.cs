@@ -1,4 +1,5 @@
-﻿using KitchenAid.Table;
+﻿using KitchenAid.DataAccess;
+using KitchenAid.Table;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -13,13 +14,12 @@ namespace KitchenAid.Console
 	internal static class Render
 	{
 		private static string rootTitle = "  KitchenAid-ConsoleApp";
-		public static void Display(AppData appData)
+		public static void Display(AppData appData, IKitchenAidRepository repository)
 		{
 			string title = TitleBuilder(appData);
-			string? data = DataBuilder(appData);
+			string? data = DataBuilder(appData, repository);
 			string prompt = PromptBuilder(appData);
 
-			//clear cosole and render new display
 			System.Console.Clear();
 
 			System.Console.WriteLine(title);
@@ -48,7 +48,7 @@ namespace KitchenAid.Console
 			return result  + "\n\r\n\r"; 
 		}
 
-		private static string? DataBuilder(AppData appData)
+		private static string? DataBuilder(AppData appData, IKitchenAidRepository repository)
 		{
 			if(appData.table == Tables.notSet || appData.action == tableAction.notSet)
 			{ return null; }
@@ -136,9 +136,9 @@ namespace KitchenAid.Console
 
 		}
 
-		public static void TestDisplay()
+		public static void TestDisplay(IKitchenAidRepository repository)
 		{
-			List<Recipe> data = DataAccess.iMyDb.TestCode();
+			List<Recipe> data = repository.TestCode().ToList();
 			
 			System.Console.Clear();
 
@@ -166,7 +166,7 @@ namespace KitchenAid.Console
 
 			System.Console.ReadLine();
 
-			DataAccess.iMyDb.RemoveRecipe(rec);
+			repository.RemoveRecipe(rec);
 
 
 		}
