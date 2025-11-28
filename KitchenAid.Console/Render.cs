@@ -138,7 +138,7 @@ namespace KitchenAid.Console
 
 		public static void TestDisplay(IKitchenAidRepository repository)
 		{
-			List<Recipe> data = repository.TestCode().ToList();
+			List<Recipe> data = repository.GetRecipesWithSubRecipesAndFinalMeasure().ToList();
 			
 			System.Console.Clear();
 

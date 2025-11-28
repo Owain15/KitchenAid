@@ -28,9 +28,18 @@ namespace KitchenAid
 
         public IQueryable<string> GetAllRecipeNames() => Recipes.Select(x => x.Name);
 
-        public Recipe GetRecipe() =>
+        public Recipe? GetRecipe() =>
             //  TODO: pass in an Id? 
             Recipes.FirstOrDefault();
+        public Recipe? GetRecipe(long id) =>
+        Recipes.Find(id);
+        
+        
+        public Recipe? GetRecipe(string name) =>
+        Recipes.FirstOrDefault(r => r.Name == name); 
+ 
+        
+       
 
         //   TODO: Remove by Id or entity?
         public void RemoveRecipe(Recipe entity)
@@ -39,7 +48,7 @@ namespace KitchenAid
         }
 
         //   TODO: What for? 
-        public IQueryable<Recipe> TestCode()
+        public IQueryable<Recipe> GetRecipesWithSubRecipesAndFinalMeasure()
         {
             return Recipes
                .Include(r => r.SubRecipes)
@@ -51,6 +60,18 @@ namespace KitchenAid
         {
             this.SaveChanges();
         }
+
+
+        public IQueryable<RecipeSubRecipe> GetSubRecipesByRecipeId(long ID)
+        {
+            return SubRecipes
+                .Where(sr => sr.ParentRecipeId == ID)
+                .Include(sr => sr.ChildRecipe);
+                
+        }
+
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
