@@ -18,9 +18,8 @@ namespace KitchenAid.WinForm.Forms
 {
     public partial class Recipie : Form
     {
-        
+
         List<string> nameData;
-        
 
         KitchenAid.Domain.Entities.Recipe? RecipieReff;
         List<KitchenAid.Domain.Entities.RecipeSubRecipe> ingredeantsData;
@@ -30,7 +29,6 @@ namespace KitchenAid.WinForm.Forms
         {
             InitializeComponent();
 
-           
 
             RecipieReff = null;
 
@@ -42,13 +40,15 @@ namespace KitchenAid.WinForm.Forms
 
         }
 
+
+
         private void UpdateRecipeNameDropDown()
         {
             nameDataComboBox.Items.Clear();
             nameDataComboBox.Enabled = false;
 
             var dbLog = GetAllRecipieNamesFromDb();
-           
+
             if (dbLog == null || dbLog.Count == 0)
             {
 
@@ -66,7 +66,6 @@ namespace KitchenAid.WinForm.Forms
             nameDataComboBox.Enabled = true;
 
         }
-
 
         private List<string> GetAllRecipieNamesFromDb()
         {
@@ -93,29 +92,23 @@ namespace KitchenAid.WinForm.Forms
         private void ChangeDataBoxOutput(string selectedNameIndex)
         {
             UpdateReffDataFromDb(selectedNameIndex);
-         
+
             DisplayRecipieReffData();
         }
 
         private void UpdateReffDataFromDb(string selectedNameIndex)
-        {           
+        {
             var services = new ServiceCollection();
             services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=myapp.db"));
             services.AddScoped<IKitchenAidRepository>(provider => provider.GetRequiredService<AppDbContext>());
             var serviceProvider = services.BuildServiceProvider();
 
             var repository = serviceProvider.GetRequiredService<IKitchenAidRepository>();
-            
+
             RecipieReff = repository.GetRecipe(selectedNameIndex);
-
-
 
             ingredeantsData = repository.GetSubRecipesByRecipeId(RecipieReff.Id).ToList();
 
-            //return Recipes
-            //.Include(r => r.SubRecipes)
-            //.ThenInclude(sr => sr.ChildRecipe)
-            //.Include(r => r.FinalMeasure);
         }
 
         private void DisplayRecipieReffData()
@@ -143,7 +136,7 @@ namespace KitchenAid.WinForm.Forms
 
                 instructiconTextBox.Text = (RecipieReff.Instructions != null || RecipieReff.Instructions != "") ? "N/A" : RecipieReff.Instructions;
 
-                
+
             }
         }
 
@@ -152,19 +145,17 @@ namespace KitchenAid.WinForm.Forms
         {
             ingredeantsDataGridView.Rows.Clear();
 
-            RecipieReff.SubRecipes.ToList();
 
-            //if (RecipieReff == null || RecipieReff.Ingredients == null || RecipieReff.Ingredients.Count == 0)
-            //{
-            //    return;
-            //}
-            //foreach (var ingredient in RecipieReff.Ingredients)
-            //{
-            //    ingredeantsDataGridView.Rows.Add(ingredient.Name, ingredient.Quantity.ToString(), ingredient.Unit.ToString());
-            //}
+            foreach (var ingredient in ingredeantsData)
+            {
+                ingredeantsDataGridView.Rows.Add(ingredient.ChildRecipe.Name, ingredient.ChildRecipe.FinalMeasure.Measurement.ToString(), ingredient.ChildRecipe.FinalMeasure.Unit.ToString());
+            }
         }
 
-
+        private void newRecipeButton_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 
 

@@ -37,6 +37,9 @@
             IdLabel = new Label();
             nameDataComboBox = new ComboBox();
             IdDataLabel = new Label();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            editLabel = new Label();
+            newRecipeButton = new Button();
             IngredeantsTableLayout = new TableLayoutPanel();
             IngredeantsLabel = new Label();
             ingredeantsDataGridView = new DataGridView();
@@ -50,9 +53,12 @@
             finalMesureLabel = new Label();
             finalMesureDataLabel = new Label();
             finalMesureDataUnitLabel = new Label();
+            updateButton = new Button();
+            deleteButton = new Button();
             tableLayout.SuspendLayout();
             nameIdPanel.SuspendLayout();
             nameIdTableLayout.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             IngredeantsTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ingredeantsDataGridView).BeginInit();
             instructionsTableLayout.SuspendLayout();
@@ -110,13 +116,14 @@
             nameIdTableLayout.Controls.Add(IdLabel, 4, 0);
             nameIdTableLayout.Controls.Add(nameDataComboBox, 2, 0);
             nameIdTableLayout.Controls.Add(IdDataLabel, 5, 0);
+            nameIdTableLayout.Controls.Add(tableLayoutPanel2, 0, 2);
             nameIdTableLayout.Dock = DockStyle.Fill;
             nameIdTableLayout.Location = new Point(0, 0);
             nameIdTableLayout.Name = "nameIdTableLayout";
             nameIdTableLayout.RowCount = 3;
             nameIdTableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            nameIdTableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
-            nameIdTableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            nameIdTableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 5F));
+            nameIdTableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
             nameIdTableLayout.Size = new Size(774, 64);
             nameIdTableLayout.TabIndex = 0;
             // 
@@ -162,6 +169,54 @@
             IdDataLabel.Size = new Size(463, 30);
             IdDataLabel.TabIndex = 3;
             IdDataLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 10;
+            nameIdTableLayout.SetColumnSpan(tableLayoutPanel2, 6);
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Controls.Add(editLabel, 0, 0);
+            tableLayoutPanel2.Controls.Add(newRecipeButton, 3, 0);
+            tableLayoutPanel2.Controls.Add(updateButton, 5, 0);
+            tableLayoutPanel2.Controls.Add(deleteButton, 7, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(3, 38);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new Size(768, 29);
+            tableLayoutPanel2.TabIndex = 4;
+            // 
+            // editLabel
+            // 
+            editLabel.AutoSize = true;
+            editLabel.Dock = DockStyle.Fill;
+            editLabel.Location = new Point(3, 0);
+            editLabel.Name = "editLabel";
+            editLabel.Size = new Size(44, 29);
+            editLabel.TabIndex = 0;
+            editLabel.Text = "Edit :";
+            editLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // newRecipeButton
+            // 
+            newRecipeButton.Dock = DockStyle.Fill;
+            newRecipeButton.Location = new Point(93, 3);
+            newRecipeButton.Name = "newRecipeButton";
+            newRecipeButton.Size = new Size(74, 23);
+            newRecipeButton.TabIndex = 1;
+            newRecipeButton.Text = "New";
+            newRecipeButton.UseVisualStyleBackColor = true;
+            newRecipeButton.Click += newRecipeButton_Click;
             // 
             // IngredeantsTableLayout
             // 
@@ -317,6 +372,28 @@
             finalMesureDataUnitLabel.TabIndex = 2;
             finalMesureDataUnitLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // updateButton
+            // 
+            updateButton.Dock = DockStyle.Fill;
+            updateButton.Enabled = false;
+            updateButton.Location = new Point(183, 3);
+            updateButton.Name = "updateButton";
+            updateButton.Size = new Size(74, 23);
+            updateButton.TabIndex = 2;
+            updateButton.Text = "Update";
+            updateButton.UseVisualStyleBackColor = true;
+            // 
+            // deleteButton
+            // 
+            deleteButton.Dock = DockStyle.Fill;
+            deleteButton.Enabled = false;
+            deleteButton.Location = new Point(273, 3);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Size = new Size(74, 23);
+            deleteButton.TabIndex = 3;
+            deleteButton.Text = "Delete";
+            deleteButton.UseVisualStyleBackColor = true;
+            // 
             // Recipie
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -329,6 +406,8 @@
             nameIdPanel.ResumeLayout(false);
             nameIdTableLayout.ResumeLayout(false);
             nameIdTableLayout.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             IngredeantsTableLayout.ResumeLayout(false);
             IngredeantsTableLayout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ingredeantsDataGridView).EndInit();
@@ -361,5 +440,10 @@
         private Label finalMesureLabel;
         private Label finalMesureDataLabel;
         private Label finalMesureDataUnitLabel;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label editLabel;
+        private Button newRecipeButton;
+        private Button updateButton;
+        private Button deleteButton;
     }
 }
